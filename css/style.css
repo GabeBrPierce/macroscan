@@ -1,0 +1,269 @@
+/* MacroScan — KaiOS 3.0 calorie/macro/weight tracker
+   Target screen: 240x320, D-pad + softkeys, dark theme. */
+
+:root {
+  --bg: #101417;
+  --bg2: #181d21;
+  --bg3: #222a30;
+  --line: #2c353c;
+  --fg: #e7edf1;
+  --muted: #8b9aa5;
+  --accent: #37c871;     /* calories / primary */
+  --protein: #ff6b6b;
+  --carb: #ffb648;
+  --fat: #5b9dff;
+  --danger: #ff5252;
+  --softkey-h: 26px;
+  --appbar-h: 28px;
+  --tab-h: 26px;
+}
+
+* { box-sizing: border-box; -moz-user-select: none; user-select: none; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Open Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.3;
+  overflow: hidden;
+}
+.hidden { display: none !important; }
+
+/* ---- App bar ---- */
+#appbar {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--appbar-h);
+  background: var(--bg2); border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; padding: 0 8px; z-index: 5;
+}
+#appbar-title { font-weight: 700; font-size: 14px; color: var(--accent); }
+#appbar-sub { margin-left: auto; font-size: 11px; color: var(--muted); }
+
+/* ---- Tab bar ---- */
+#tabbar {
+  position: fixed; top: var(--appbar-h); left: 0; right: 0; height: var(--tab-h);
+  display: flex; background: var(--bg2); border-bottom: 1px solid var(--line); z-index: 5;
+}
+.tab {
+  flex: 1; text-align: center; line-height: var(--tab-h); font-size: 11px;
+  color: var(--muted); border-bottom: 2px solid transparent;
+}
+.tab.active { color: var(--fg); border-bottom-color: var(--accent); font-weight: 600; }
+.tab.focused { background: var(--bg3); color: #fff; }
+
+/* ---- Screen / scroll area ---- */
+#screen {
+  position: fixed;
+  top: calc(var(--appbar-h) + var(--tab-h));
+  bottom: var(--softkey-h);
+  left: 0; right: 0;
+  overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.view { padding: 6px 8px 12px; }
+.section-title { color: var(--muted); font-size: 10px; text-transform: uppercase;
+  letter-spacing: .5px; margin: 10px 2px 4px; }
+.section-title:first-child { margin-top: 2px; }
+
+/* ---- Softkeys ---- */
+.softkey-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; height: var(--softkey-h);
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg2); border-top: 1px solid var(--line); z-index: 5;
+  font-size: 11px; color: var(--fg);
+}
+.softkey { padding: 0 8px; line-height: var(--softkey-h); white-space: nowrap; }
+.softkey.center { flex: 1; text-align: center; font-weight: 700; color: var(--accent); }
+.softkey:empty { color: transparent; }
+
+/* ---- Generic rows / list items ---- */
+.row {
+  background: var(--bg2); border: 1px solid transparent; border-radius: 6px;
+  padding: 7px 8px; margin: 4px 0; display: flex; align-items: center; gap: 8px;
+}
+.row.focused { background: var(--bg3); border-color: var(--accent); }
+.row .grow { flex: 1; min-width: 0; }
+.row .title { display: block; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .sub { display: block; font-size: 10px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .right { font-size: 12px; color: var(--accent); white-space: nowrap; text-align: right; }
+.row .right .u { font-size: 9px; color: var(--muted); }
+
+.empty { color: var(--muted); text-align: center; padding: 24px 12px; font-size: 12px; }
+.hint { color: var(--muted); font-size: 10px; margin: 2px 2px 6px; }
+
+/* ---- Calorie ring (Today) ---- */
+.cal-card { background: var(--bg2); border-radius: 8px; padding: 10px; margin: 2px 0 6px;
+  display: flex; align-items: center; gap: 12px; }
+.ring { position: relative; width: 92px; height: 92px; flex: none; }
+.ring svg { transform: rotate(-90deg); }
+.ring .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; }
+.ring .ring-num { font-size: 20px; font-weight: 700; }
+.ring .ring-lbl { font-size: 9px; color: var(--muted); }
+.cal-meta { flex: 1; min-width: 0; }
+.cal-meta .line { display: flex; justify-content: space-between; font-size: 11px; padding: 1px 0; }
+.cal-meta .line .v { font-weight: 600; }
+.cal-meta .over { color: var(--danger); }
+
+/* ---- Date navigator + steppers (shared) ---- */
+.datenav, .stepper {
+  display: flex; align-items: stretch; gap: 6px; margin: 2px 0 6px;
+}
+.datebox, .stepbox {
+  flex: 1; background: var(--bg2); border-radius: 6px; padding: 5px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.date-big { font-size: 14px; font-weight: 700; }
+.date-small { font-size: 10px; color: var(--muted); }
+.stepval { font-size: 20px; font-weight: 700; }
+.navbtn {
+  width: 40px; flex: none; background: var(--bg2); border: 1px solid var(--line);
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--fg);
+}
+.navbtn.focused { border-color: var(--accent); background: var(--accent); color: #06120a; }
+
+/* ---- Charts ---- */
+.chart { width: 100%; height: auto; background: var(--bg2); border-radius: 6px;
+  margin: 2px 0 6px; display: block; }
+
+/* ---- Macro bars ---- */
+.macros { display: flex; gap: 6px; margin: 2px 0 6px; }
+.macro { flex: 1; background: var(--bg2); border-radius: 6px; padding: 6px; text-align: center; }
+.macro .mlabel { font-size: 9px; color: var(--muted); text-transform: uppercase; }
+.macro .mval { font-size: 13px; font-weight: 700; margin-top: 1px; }
+.macro .mgoal { font-size: 9px; color: var(--muted); }
+.macro .mbar { height: 4px; border-radius: 2px; background: var(--bg3); margin-top: 4px; overflow: hidden; }
+.macro .mbar > i { display: block; height: 100%; width: 0; }
+.macro.p .mval { color: var(--protein); } .macro.p .mbar > i { background: var(--protein); }
+.macro.c .mval { color: var(--carb); }    .macro.c .mbar > i { background: var(--carb); }
+.macro.f .mval { color: var(--fat); }     .macro.f .mbar > i { background: var(--fat); }
+
+/* ---- Meal group ---- */
+.meal-head { display: flex; align-items: baseline; justify-content: space-between;
+  margin: 10px 2px 2px; }
+.meal-head .mh-name { font-size: 12px; font-weight: 700; }
+.meal-head .mh-cal { font-size: 11px; color: var(--muted); }
+
+/* ---- Forms ---- */
+.field { margin: 6px 0; }
+.field label { display: block; font-size: 10px; color: var(--muted); margin-bottom: 3px; }
+.field input, .field select, .input {
+  width: 100%; background: var(--bg2); color: var(--fg);
+  border: 1px solid var(--line); border-radius: 6px; padding: 7px 8px; font-size: 13px;
+}
+.field input:focus, .field select:focus, .input:focus {
+  outline: none; border-color: var(--accent); background: var(--bg3);
+}
+.field.focused input, .field.focused select { border-color: var(--accent); background: var(--bg3); }
+.field .suffix { float: right; font-size: 10px; color: var(--muted); margin-top: -18px; margin-right: 8px; position: relative; }
+
+.btnrow { display: flex; gap: 6px; margin-top: 8px; }
+.btn {
+  flex: 1; text-align: center; padding: 9px; border-radius: 6px; font-size: 13px;
+  background: var(--bg3); border: 1px solid var(--line); color: var(--fg);
+}
+.btn.focused { border-color: var(--accent); background: var(--accent); color: #06120a; font-weight: 700; }
+.btn.danger.focused { background: var(--danger); border-color: var(--danger); color: #fff; }
+
+/* ---- Search box (Add view) ---- */
+.searchbar { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; }
+.searchbar input { flex: 1; }
+.chiprow { display: flex; gap: 6px; margin-bottom: 6px; }
+.chip { flex: 1; text-align: center; padding: 7px 4px; border-radius: 6px; font-size: 11px;
+  background: var(--bg2); border: 1px solid var(--line); color: var(--muted); }
+.chip.focused { border-color: var(--accent); color: var(--fg); background: var(--bg3); }
+.badge { font-size: 8px; padding: 1px 4px; border-radius: 3px; background: var(--bg3);
+  color: var(--muted); margin-left: 4px; vertical-align: middle; }
+.badge.usda { color: var(--accent); }
+.badge.off { color: var(--carb); }
+.badge.custom { color: var(--fat); }
+.badge.recent { color: var(--muted); }
+
+/* ---- Segmented toggle (g / oz) ---- */
+.seg { display: flex; gap: 6px; margin: 2px 0 6px; }
+.segbtn {
+  flex: 1; text-align: center; padding: 8px 4px; border-radius: 6px; font-size: 12px;
+  background: var(--bg2); border: 1px solid var(--line); color: var(--muted);
+}
+.segbtn.active { color: var(--fg); border-color: var(--accent); }
+.segbtn.focused { background: var(--bg3); color: #fff; border-color: var(--accent); }
+
+/* ---- Scanner (dedicated full-screen camera) ---- */
+#scanScreen {
+  position: fixed; top: 0; left: 0; right: 0; bottom: var(--softkey-h);
+  background: #000; z-index: 30; overflow: hidden;
+}
+#scanVideoWrap { position: absolute; inset: 0; }
+#scanScreen video, #scanScreen canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.scan-reticle {
+  position: absolute; left: 10%; right: 10%; top: 34%; bottom: 34%;
+  border: 2px solid var(--accent); border-radius: 6px;
+  box-shadow: 0 0 0 999px rgba(0,0,0,.42); overflow: hidden;
+}
+.scan-laser {
+  position: absolute; left: 0; right: 0; top: 50%; height: 2px;
+  background: var(--danger); box-shadow: 0 0 6px var(--danger);
+}
+.scan-top {
+  position: absolute; top: 0; left: 0; right: 0; padding: 6px 8px;
+  font-size: 11px; color: #fff; text-align: center;
+  background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,0));
+}
+.scan-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 6px 8px;
+  font-size: 10px; color: var(--muted); text-align: center;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.6));
+}
+.scan-bottom b { color: var(--fg); }
+.scan-flash {
+  position: absolute; top: 6px; right: 6px; z-index: 2;
+  font-size: 10px; color: #fff; padding: 3px 7px; border-radius: 12px;
+  background: rgba(0,0,0,.5); border: 1px solid var(--line);
+}
+.scan-flash.on { background: var(--accent); color: #06120a; border-color: var(--accent); font-weight: 700; }
+.scan-flash.off { opacity: .5; }
+
+/* ---- Pace hint (Today: calories vs time of day) ---- */
+.pace { background: var(--bg2); border-radius: 6px; padding: 6px 8px; margin: 0 0 6px;
+  font-size: 11px; }
+.pace.over { border-left: 3px solid var(--danger); }
+.pace.right-accent { border-left: 3px solid var(--accent); }
+.pace .pace-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  margin: 0 3px 0 6px; vertical-align: middle; }
+.pace .pace-dot:first-child { margin-left: 0; }
+.pace .pace-msg { color: var(--muted); font-size: 10px; margin-top: 3px; }
+
+/* ---- Consistency strip (Today) ---- */
+.con { background: var(--bg2); border-radius: 6px; padding: 7px 8px; margin: 2px 0 6px; }
+.con-cells { display: flex; gap: 3px; }
+.con-cell { flex: 1; height: 16px; border-radius: 3px; background: var(--bg3); }
+.con-cell.good { background: var(--accent); }
+.con-cell.over { background: var(--danger); }
+.con-cell.none { background: transparent; border: 1px solid var(--line); }
+.con-stats { display: flex; flex-direction: column; gap: 1px; margin-top: 6px;
+  font-size: 10px; color: var(--muted); }
+.con-stats b { color: var(--fg); }
+
+/* ---- Weight trend ---- */
+.stat-row { display: flex; gap: 6px; margin: 4px 0 6px; }
+.stat { flex: 1; background: var(--bg2); border-radius: 6px; padding: 7px; text-align: center; }
+.stat .sval { font-size: 15px; font-weight: 700; }
+.stat .slbl { font-size: 9px; color: var(--muted); text-transform: uppercase; }
+.spark { width: 100%; height: 56px; background: var(--bg2); border-radius: 6px; margin: 2px 0 6px; }
+
+/* ---- Toast ---- */
+#toast {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(var(--softkey-h) + 8px); z-index: 20;
+  background: rgba(20,26,30,.96); border: 1px solid var(--accent);
+  color: var(--fg); padding: 7px 12px; border-radius: 16px; font-size: 12px;
+  max-width: 88%; text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,.5);
+}
+
+/* small helpers */
+.kvgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.dimtag { color: var(--muted); font-size: 10px; }
+.right-accent { color: var(--accent); }

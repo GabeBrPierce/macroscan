@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MacroScan — Calorie, macro &amp; weight tracker for KaiOS</title>
+<meta name="description" content="MacroScan is a calorie, macro and weight tracker for KaiOS. Scan barcodes, search foods, set goals and see your progress — all offline and private.">
+<style>
+  :root{
+    --teal:#1a8477; --teal-d:#15564d; --orange:#e8871e; --ink:#1f2b2e;
+    --muted:#5a6b6c; --line:#e2e8ea; --bg:#ffffff; --bg2:#f5f8f8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:var(--ink);
+    background:var(--bg);line-height:1.55;font-size:16px}
+  a{color:var(--teal)}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header.hero{background:linear-gradient(180deg,#f6dccb 0%,#ece2ea 45%,#dceaef 100%);
+    border-bottom:1px solid var(--line);padding:34px 0 26px}
+  .hero-inner{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+  .hero img.icon{width:96px;height:96px;border-radius:22px;box-shadow:0 6px 18px rgba(26,43,51,.18);flex:none}
+  .hero h1{margin:0 0 4px;font-size:34px;color:var(--teal-d);letter-spacing:-.5px}
+  .hero p.tag{margin:0;color:#3f5a55;font-size:17px;font-weight:600}
+  .badge{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:#fff;
+    background:var(--teal);padding:5px 12px;border-radius:20px}
+  section{padding:34px 0}
+  section.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-size:22px;color:var(--teal-d);margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card h3{margin:0 0 6px;font-size:16px;color:var(--teal-d)}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+  .card .ic{font-size:22px;margin-bottom:6px}
+  .shots{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px}
+  .shots img{height:320px;width:240px;border:1px solid var(--line);border-radius:14px;flex:none;background:#101417}
+  footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px}
+  footer a{font-weight:600}
+  .muted{color:var(--muted)}
+  @media (max-width:520px){ .hero h1{font-size:28px} .shots img{height:280px;width:210px} }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <img class="icon" src="assets/icon.png" alt="MacroScan app icon">
+      <div>
+        <h1>MacroScan</h1>
+        <p class="tag">Calorie, macro &amp; weight tracker</p>
+        <span class="badge">Built for KaiOS</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <p style="font-size:17px;max-width:640px">
+        MacroScan is a fast, private calorie and macro tracker made for KaiOS feature phones.
+        Log your food, hit your goals, and watch your weight trend — all with the D-pad, and all
+        stored on your own device.
+      </p>
+      <div class="grid">
+        <div class="card"><div class="ic">🔎</div><h3>Search &amp; scan foods</h3><p>Look up foods from USDA FoodData Central and Open Food Facts, or scan a barcode.</p></div>
+        <div class="card"><div class="ic">🔥</div><h3>Calories &amp; macros</h3><p>Track calories, protein, carbs and fat against your daily goals with a live ring.</p></div>
+        <div class="card"><div class="ic">⏱️</div><h3>Day-pace ring</h3><p>See how far into your day you are versus how much of your calorie budget you've used.</p></div>
+        <div class="card"><div class="ic">📉</div><h3>Weight trend &amp; prediction</h3><p>Log your weight and see a projected trend line toward your goal, with an ETA.</p></div>
+        <div class="card"><div class="ic">✅</div><h3>Consistency</h3><p>A 14-day adherence view shows how consistently you track and stay under your limit.</p></div>
+        <div class="card"><div class="ic">🔒</div><h3>Offline &amp; private</h3><p>Your diary lives on your device. No account, no cloud — with an optional sdcard backup.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Screens</h2>
+      <div class="shots">
+        <img src="assets/shot1.png" alt="Today dashboard with calorie and day rings">
+        <img src="assets/shot2.png" alt="Weight trend with projection to goal">
+        <img src="assets/shot3.png" alt="Tracking consistency over 14 days">
+        <img src="assets/shot4.png" alt="Search and add foods">
+        <img src="assets/shot5.png" alt="Quick add calories and macros">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p><a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; Support: <a href="mailto:gabebrpierce@gmail.com">gabebrpierce@gmail.com</a></p>
+      <p class="muted">© 2026 Gabriel Pierce. MacroScan uses USDA FoodData Central and Open Food Facts for nutrition data.</p>
+    </div>
+  </footer>
+</body>
+</html>

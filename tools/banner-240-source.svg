@@ -1,0 +1,62 @@
+<svg width="240" height="130" viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6dccb"/>
+      <stop offset="0.5" stop-color="#ece2ea"/>
+      <stop offset="1" stop-color="#dceaef"/>
+    </linearGradient>
+    <linearGradient id="tile2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f5f6"/>
+    </linearGradient>
+    <filter id="soft2" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1a2b33" flood-opacity="0.22"/>
+    </filter>
+    <clipPath id="round2"><rect width="240" height="130" rx="0"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#round2)">
+    <!-- sky -->
+    <rect width="240" height="130" fill="url(#sky2)"/>
+    <!-- distant range -->
+    <polygon points="-10,86 34,52 70,80 108,50 150,84 196,54 250,86 250,130 -10,130" fill="#c6d0d8"/>
+    <polygon points="108,50 130,72 112,80 90,70" fill="#ffffff" opacity="0.85"/>
+    <polygon points="196,54 216,74 200,80 180,70" fill="#ffffff" opacity="0.8"/>
+    <!-- green hills -->
+    <path d="M-10,100 C 60,86 120,104 180,94 C 210,89 240,98 250,95 L250,130 L-10,130 Z" fill="#6fa07d"/>
+    <path d="M-10,112 C 70,100 130,116 200,106 L250,110 L250,130 L-10,130 Z" fill="#5c8e6c"/>
+  </g>
+
+  <!-- app icon -->
+  <g filter="url(#soft2)">
+    <svg x="10" y="29" width="72" height="72" viewBox="0 0 256 256">
+      <rect x="8" y="8" width="240" height="240" rx="54" fill="url(#tile2)" stroke="#e2e8ea" stroke-width="2"/>
+      <g fill="none" stroke-width="15" stroke-linecap="round">
+        <path d="M 88,62.7 A 80,80 0 0 0 94.2,204.5" stroke="#1a8477"/>
+        <path d="M 168,62.7 A 80,80 0 0 1 161.8,204.5" stroke="#e8871e"/>
+      </g>
+      <g fill="#1a8477">
+        <ellipse cx="110" cy="96" rx="20" ry="27"/>
+        <rect x="103" y="112" width="14" height="86" rx="7"/>
+      </g>
+      <g fill="#1a8477">
+        <rect x="137" y="66" width="6" height="46" rx="3"/>
+        <rect x="149" y="66" width="6" height="46" rx="3"/>
+        <rect x="161" y="66" width="6" height="46" rx="3"/>
+        <path d="M137 104 h30 a6 6 0 0 1 6 6 v6 a21 15 0 0 1 -42 0 v-6 a6 6 0 0 1 6 -6 z"/>
+        <rect x="145" y="120" width="14" height="78" rx="7"/>
+      </g>
+      <g>
+        <path d="M128 182c-13 8-19 19-19 30 0 13 9 22 19 22s19-9 19-22c0-6-3-11-7-16-2 6-5 9-8 9 4-9 0-18-4-23z" fill="#2fa894"/>
+        <g fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M128 227 v-20"/><path d="M120 214 l8 -8 8 8"/>
+        </g>
+      </g>
+    </svg>
+  </g>
+
+  <!-- wordmark -->
+  <text x="90" y="56" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="800" fill="#15564d">MacroScan</text>
+  <text x="91" y="74" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#3f5a55">Calorie &amp; macro tracker</text>
+  <text x="91" y="89" font-family="Segoe UI, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#1a8477">Scan &#183; Track &#183; Reach goals</text>
+</svg>

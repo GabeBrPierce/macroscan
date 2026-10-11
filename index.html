@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MacroScan</title>
+  <link rel="manifest" href="pwa.webmanifest">
+  <meta name="theme-color" content="#101417">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="app">
+  <header id="appbar">
+    <div id="appbar-title">Macro Scan</div>
+    <div id="appbar-sub"></div>
+  </header>
+
+  <nav id="tabbar">
+    <div class="tab" data-view="today">Today</div>
+    <div class="tab" data-view="add">Add</div>
+    <div class="tab" data-view="weight">Weight</div>
+    <div class="tab" data-view="foods">Foods</div>
+    <div class="tab" data-view="settings">More</div>
+  </nav>
+
+  <main id="screen"><!-- views render here --></main>
+
+  <div id="toast" class="hidden"></div>
+
+  <footer class="softkey-bar">
+    <div id="softkey-left" class="softkey"></div>
+    <div id="softkey-center" class="softkey center"></div>
+    <div id="softkey-right" class="softkey"></div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/vendor/quagga.min.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/net.js"></script>
+  <script src="js/scanner.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/vendor/kaiads.v5.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f5f6"/>
+    </linearGradient>
+  </defs>
+  <!-- tile -->
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="url(#tile)" stroke="#e2e8ea" stroke-width="2"/>
+
+  <!-- two-tone ring (teal left, orange right) with gaps top & bottom -->
+  <g fill="none" stroke-width="15" stroke-linecap="round">
+    <path d="M 88,62.7 A 80,80 0 0 0 94.2,204.5" stroke="#1a8477"/>
+    <path d="M 168,62.7 A 80,80 0 0 1 161.8,204.5" stroke="#e8871e"/>
+  </g>
+
+  <!-- spoon (left) -->
+  <g fill="#1a8477">
+    <ellipse cx="110" cy="96" rx="20" ry="27"/>
+    <rect x="103" y="112" width="14" height="86" rx="7"/>
+  </g>
+
+  <!-- fork (right) -->
+  <g fill="#1a8477">
+    <rect x="137" y="66" width="6" height="46" rx="3"/>
+    <rect x="149" y="66" width="6" height="46" rx="3"/>
+    <rect x="161" y="66" width="6" height="46" rx="3"/>
+    <path d="M137 104 h30 a6 6 0 0 1 6 6 v6 a21 15 0 0 1 -42 0 v-6 a6 6 0 0 1 6 -6 z"/>
+    <rect x="145" y="120" width="14" height="78" rx="7"/>
+  </g>
+
+  <!-- flame + energy arrow (calorie burn) at bottom center -->
+  <g>
+    <path d="M128 182c-13 8-19 19-19 30 0 13 9 22 19 22s19-9 19-22c0-6-3-11-7-16-2 6-5 9-8 9 4-9 0-18-4-23z" fill="#2fa894"/>
+    <g fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M128 227 v-20"/>
+      <path d="M120 214 l8 -8 8 8"/>
+    </g>
+  </g>
+</svg>
