@@ -1,6 +1,6 @@
 /* MacroScan service worker — offline shell cache.
    Network requests to USDA / Open Food Facts always go to the network. */
-const CACHE = 'macroscan-v17';
+const CACHE = 'macroscan-v18';
 const SHELL = [
   './',
   './index.html',

@@ -51,7 +51,8 @@
     displayKaiAd();
   }
 
-  displayKaiAd();
+  // Ads only exist on KaiOS; the web/PWA build never loads the SDK.
+  if (/KaiOS/i.test(navigator.userAgent)) displayKaiAd();
   
   /* ============================ helpers ============================ */
   function esc(s) {
