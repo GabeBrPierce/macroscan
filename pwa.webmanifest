@@ -11,7 +11,7 @@
   "theme_color": "#101417",
   "background_color": "#101417",
   "icons": [
-    { "src": "icons/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
-    { "src": "icons/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" }
+    { "src": "https://gabebrpierce.github.io/macroscan/icons/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "https://gabebrpierce.github.io/macroscan/icons/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" }
   ]
 }
