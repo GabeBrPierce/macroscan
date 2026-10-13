@@ -3,7 +3,14 @@
   "short_name": "MacroScan",
   "id": "./",
   "description": "Calorie, macro and weight tracker. Scan barcodes, search foods, set goals and log your day.",
-  "categories": ["health", "lifestyle"],
+  "developer": {
+    "name": "Gabriel Pierce",
+    "url": "https://gabebrpierce.github.io/macroscan/"
+  },
+  "categories": [
+    "health",
+    "lifestyle"
+  ],
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -11,8 +18,18 @@
   "theme_color": "#101417",
   "background_color": "#101417",
   "icons": [
-    { "src": "https://gabebrpierce.github.io/macroscan/icons/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
-    { "src": "https://gabebrpierce.github.io/macroscan/icons/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" }
+    {
+      "src": "https://gabebrpierce.github.io/macroscan/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "https://gabebrpierce.github.io/macroscan/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
   ],
   "b2g_features": {
     "version": "3.3.3",
@@ -20,13 +37,16 @@
     "core_privileged": false,
     "type": "web",
     "permissions": {
-      "camera": { "description": "Scan food barcodes" },
-      "systemXHR": { "description": "Look up foods from USDA and Open Food Facts" },
-      "device-storage:sdcard": { "description": "Save and restore your data backups", "access": "readwrite" }
-    },
-    "developer": {
-      "name": "Gabriel Pierce",
-      "url": "https://gabebrpierce.github.io/macroscan/"
+      "camera": {
+        "description": "Scan food barcodes"
+      },
+      "systemXHR": {
+        "description": "Look up foods from USDA and Open Food Facts"
+      },
+      "device-storage:sdcard": {
+        "description": "Save and restore your data backups",
+        "access": "readwrite"
+      }
     },
     "focus_color": "#37c871",
     "cursor": false
